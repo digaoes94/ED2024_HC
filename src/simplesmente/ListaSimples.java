@@ -125,7 +125,7 @@ public class ListaSimples {
 			return 0.0;
 		}
 		else {
-			return (double )somaValores()/this.qtdNos;
+			return (double) somaValores()/this.qtdNos;
 		}
 	}
 	
