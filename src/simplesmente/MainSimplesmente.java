@@ -15,9 +15,10 @@ public class MainSimplesmente {
 		System.out.println("Vamos criar duas listas, a L1 e a L2, ambas com 4 valores.");
 		
 		int chave = 0;
-		ListaSimples L1 = new ListaSimples();
 		
+		ListaSimples L1 = new ListaSimples();
 		System.out.println("Lista L1");
+		
 		for (int a = 0; a < 4; a++) {
 			System.out.print("Digite o valor " + (a + 1) + " da L1: ");
 			chave = scan.nextInt();
@@ -25,8 +26,8 @@ public class MainSimplesmente {
 			System.out.println();
 		}
 		
-		System.out.println("Lista L2");
 		ListaSimples L2 = new ListaSimples();
+		System.out.println("Lista L2");
 		
 		for (int a = 0; a < 4; a++) {
 			System.out.print("Digite o valor " + (a + 1) + " da L2: ");
@@ -38,8 +39,6 @@ public class MainSimplesmente {
 		do {
 			run = Menu(L1, L2);
 		} while (run);
-		
-
 	}
 	
 	public static boolean Menu(ListaSimples L1, ListaSimples L2) {
@@ -53,11 +52,12 @@ public class MainSimplesmente {
 		System.out.println("7. Adicionar 50 em lista");
 		System.out.println("8. Buscar ocorrências ou adicionar valor");
 		System.out.println("9. Comparar listas");
-		System.out.println("10. Sair");
+		System.out.println("10. Ver valores de uma lista");
+		System.out.println("11. Sair");
 		
 		int escolha = scan.nextInt();
 		
-		if (escolha == 10) {
+		if (escolha == 11) {
 			System.out.println("O programa será encerrado.");
 			return false;
 		}
@@ -66,6 +66,7 @@ public class MainSimplesmente {
 			case 1:
 				String opcaoLista = "";
 				int novoValor;
+				
 				System.out.println("Inserir na L1 ou L2?");
 				opcaoLista = scan.nextLine();
 				System.out.println("Qual o valor a inserir?");
@@ -110,19 +111,20 @@ public class MainSimplesmente {
 				int pesquisarValor = scan.nextInt();
 				
 				if (opcaoLista == "L1") {
-					if (L1.pesquisarNo(pesquisarValor) != null) {
-						System.out.println("Valor " + pesquisarValor + " encontrado.");
+					if (L1.pesquisarNo(pesquisarValor) == null) {
+						System.out.println("Valor não encontrado.");
 					}
 					else {
-						System.out.println("Valor não encontrado.");
+						System.out.println("Valor " + pesquisarValor + " encontrado.");
 					}
 				}
+				
 				if (opcaoLista == "L2") {
-					if (L2.pesquisarNo(pesquisarValor) != null) {
-						System.out.println("Valor " + pesquisarValor + " encontrado.");
+					if (L2.pesquisarNo(pesquisarValor) == null) {
+						System.out.println("Valor não encontrado.");
 					}
 					else {
-						System.out.println("Valor não encontrado.");
+						System.out.println("Valor " + pesquisarValor + " encontrado.");
 					}
 				}
 				return true;
@@ -144,10 +146,10 @@ public class MainSimplesmente {
 				opcaoLista = scan.nextLine();
 				
 				if (opcaoLista == "L1") {
-					System.out.println("Média da L1: " + L1.mediaValores());
+					System.out.println("Média da L1: " +  String.format("%.2f", L1.mediaValores()));
 				}
 				if (opcaoLista == "L2") {
-					System.out.println("Média da L2: " + L2.mediaValores());
+					System.out.println("Média da L2: " + String.format("%.2f", L2.mediaValores()));
 				}
 				return true;
 				
@@ -207,6 +209,18 @@ public class MainSimplesmente {
 				}
 				else {
 					System.out.println("As listas não são iguais.");
+				}
+				return true;
+				
+			case 10:
+				System.out.println("Ver valores de L1 ou L2?");
+				opcaoLista = scan.nextLine();
+				
+				if (opcaoLista == "L1") {
+					System.out.println(L1.toString());
+				}
+				if (opcaoLista == "L2") {
+					System.out.println(L2.toString());
 				}
 				return true;
 				
