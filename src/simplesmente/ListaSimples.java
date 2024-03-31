@@ -102,15 +102,15 @@ public class ListaSimples {
 	}
 	
 	//  LISTA DE EXERCÍCIOS 2 - QUESTÃO 7 (função de somar valores)
-	public int somaValores () {
+	public int somaValores() {
 		int soma = 0;
-		No aux = this.primeiro;
+		No aux = this.getPrimeiro();
 		
 		if (this.listaVazia()) {
 			return 0;
 		}
 		else {
-			while (this.primeiro != null) {
+			while (aux != null) {
 				soma += aux.getInfo().getChave();
 				aux = aux.getProximo();
 			}
@@ -120,12 +120,12 @@ public class ListaSimples {
 	}
 	
 	//  LISTA DE EXERCÍCIOS 2 - QUESTÃO 8 (média dos valores da lista)
-	public double mediaValores () {
+	public double mediaValores() {
 		if (this.listaVazia()) {
 			return 0.0;
 		}
 		else {
-			return (double) somaValores()/this.qtdNos;
+			return (double) this.somaValores()/this.qtdNos;
 		}
 	}
 	
