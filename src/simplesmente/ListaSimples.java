@@ -107,16 +107,16 @@ public class ListaSimples {
 		No aux = this.getPrimeiro();
 		
 		if (this.listaVazia()) {
-			return 0;
+			soma = 0;
 		}
 		else {
 			while (aux != null) {
 				soma += aux.getInfo().getChave();
 				aux = aux.getProximo();
 			}
-			
-			return soma;
 		}
+		
+		return soma;
 	}
 	
 	//  LISTA DE EXERCÍCIOS 2 - QUESTÃO 8 (média dos valores da lista)
@@ -125,7 +125,7 @@ public class ListaSimples {
 			return 0.0;
 		}
 		else {
-			return (double) this.somaValores()/this.qtdNos;
+			return (double) this.somaValores()/this.getQtdNos();
 		}
 	}
 	
@@ -136,9 +136,9 @@ public class ListaSimples {
 		}
 		else {
 			String pares = "";
-			No aux = this.primeiro;
+			No aux = this.getPrimeiro();
 			
-			while (this.primeiro != null) {
+			while (this.getPrimeiro() != null) {
 				if (aux.getInfo().getChave() % 2 == 0) {
 					pares += aux.getInfo().getChave() + "\n";
 				}
@@ -153,8 +153,8 @@ public class ListaSimples {
 	//  LISTA DE EXERCÍCIOS 2 - QUESTÃO 10 (VERDADEIRO se duas listas forem iguais)
 	public boolean compararListas (ListaSimples L1, ListaSimples L2) {
 		boolean status = false;
-		No aux1 = L1.primeiro;
-		No aux2 = L2.primeiro;
+		No aux1 = L1.getPrimeiro();
+		No aux2 = L2.getPrimeiro();
 		
 		if (aux1 != aux2) {
 			status = false;
@@ -178,7 +178,7 @@ public class ListaSimples {
 	
 	//  LISTA DE EXERCÍCIOS 2 - QUESTÃO 11 (trocar para 50)
 	public String trocar50(int chave) {
-		No atual = this.primeiro;
+		No atual = this.getPrimeiro();
 		
 		while ((atual != null) && (atual.getInfo().getChave() != chave)) {
 			atual = atual.getProximo();
@@ -195,7 +195,7 @@ public class ListaSimples {
 	
 	//  LISTA DE EXERCÍCIOS 2 - QUESTÃO 12 (retorna ocorrencias ou adiciona à lista)
 	public int encontraOuAdiciona (int chave) {
-		No aux = this.primeiro;
+		No aux = this.getPrimeiro();
 		int count = 0;
 		
 		if (this.listaVazia()) {
@@ -223,7 +223,7 @@ public class ListaSimples {
 	
 	public String toString() {
 		String msg = "";
-		No atual = this.primeiro;
+		No atual = this.getPrimeiro();
 		
 		while (atual != null) {
 			msg += atual.getInfo().getChave() + "\n";
