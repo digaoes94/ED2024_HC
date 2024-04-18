@@ -267,12 +267,12 @@ public class ListaDupla {
 	}
 	
 	//  LISTA 04 - QUESTÃO 13 - Passar produtos enlatados (chave > 100) da L1 para L2
-	public void produtosEnlatados(ListaDupla L2) {
+	public void produtosEnlatados(ListaDupla L3) {
 		NoDupla atual = this.primeiro;
 		
 		while (atual != null) {
 			if (atual.getInfo().getChave() > 100) {
-				L2.inserirUltimo(new Item(atual.getInfo().getChave()));
+				L3.inserirUltimo(new Item(atual.getInfo().getChave()));
 				this.removerNo(atual.getInfo().getChave());  //  posso ter entendido errado, talvez não seja necessário retirar o prod da L1
 			}
 		}

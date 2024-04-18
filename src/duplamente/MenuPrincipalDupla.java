@@ -75,34 +75,60 @@ public class MenuPrincipalDupla {
 				}
 				return true;
 			case 4:
+				int qtdNos, novoValor;
+				ListaDupla L2 = new ListaDupla();
+				System.out.println("Crie uma segunda lista (L2).");
+				System.out.print("Informe quantos nós terá a L2: ");
+				qtdNos = scan.nextInt();
 				
+				for (int i = 1; i <= qtdNos; i++) {
+					System.out.print("Informe o valor " + i + ": ");
+					novoValor = scan.nextInt();
+					L2.inserirUltimo(new Item(novoValor));
+				}
+				
+				L1.concatenarListas(L2);
+				System.out.println("Nova lista:\n" + L1.toString());
 				return true;
 			case 5:
-							
+				System.out.println("Primeira metade da lista");	
+				System.out.println(L1.primeiraMetade().toString());
 				return true;
 			case 6:
-				
+				System.out.print("Maior valor da lista: " + L1.maiorValor());
 				return true;
 			case 7:
-				
+				System.out.print("Média da lista: " + L1.mediaAritmetica());
 				return true;
 			case 8:
-				
+				System.out.println(L1.retiraZero());
 				return true;
 			case 9:
-				
+				L1.retiraRepetidos();
 				return true;
 			case 10:
-				
+				//  NÃO TESTAR, VAI DAR RUIM
+				System.out.println(L1.atletasAcimaDe2m());
 				return true;
 			case 11:
-				
+				ListaDupla L3 = new ListaDupla();
+				L1.produtosEnlatados(L3);
 				return true;
 			case 12:
+				System.out.print("Informe a palavra a ser testada: ");
+				String original = scan.next();
 				
+				if (L1.palindromo(original)) {
+					System.out.println("A palavra é um palíndromo.");
+				}
+				else {
+					System.out.println("A palavra não é um palíndromo.");
+				}
 				return true;
 			case 13:
-				
+				System.out.print("Informe o valor a adicionar: ");
+				novoValor = scan.nextInt();
+				L1.inserirEmOrdem(novoValor);
 				return true;
 			default:
 				System.out.println("Opção inválida, o programa será encerrado.");
