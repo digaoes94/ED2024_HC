@@ -280,6 +280,7 @@ public class ListaDupla {
 	
 	//  LISTA 04 - QUESTÃO 14 - Checar palíndromo
 	public boolean palindromo(String original) {
+		original = original.toLowerCase();
 		String inversa = "";
 		
 		for (int i = 0; i < original.length(); i++) {
