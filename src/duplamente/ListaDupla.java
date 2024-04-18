@@ -231,4 +231,95 @@ public class ListaDupla {
 	}
 	
 	//  LISTA 04 - QUESTÃO 11 - Retirar valores repetidos
+	public void retiraRepetidos() {
+		NoDupla atual, compara;
+		atual = compara = this.primeiro;
+		
+		while (compara != null) {
+			
+			while (atual != null) {
+				atual = compara.getProximo();
+				if (atual == compara) {
+					this.removerNo(atual.getInfo().getChave());
+				}
+			}
+			
+			compara = compara.getProximo();
+		}
+		
+		System.out.println("Os valores repetidos foram removidos.");
+	}
+	
+	// LISTA 04 - QUESTÃO 12 - Mostrar nome dos atletas com mais de 2m de altura
+		//OBS: os nós criados pela professora não possuem um campo de informação de nome, de forma que a lógica 
+		//só pode ser testada por abstração, a não ser que se criem novas classes somente para testar esta função
+	public String atletasAcimaDe2m() {
+		String msg = "";
+		NoDupla atual = this.primeiro;  //Considere que Item possui um valor double (se os valores forem salvos em cm, seria int) altura e um valor String nome
+		
+		while (atual != null) {
+			if (atual.getInfo().getAltura() > 2.0) {
+				msg += "Jogador: " = atual.getInfo().getNome() + ". Altura: " + String.format("%.2f", atual.getInfo().getAltura()) + ".\n";
+			}
+		}
+		
+		return msg;
+	}
+	
+	//  LISTA 04 - QUESTÃO 13 - Passar produtos enlatados (chave > 100) da L1 para L2
+	public void produtosEnlatados(ListaDupla L2) {
+		NoDupla atual = this.primeiro;
+		
+		while (atual != null) {
+			if (atual.getInfo().getChave() > 100) {
+				L2.inserirUltimo(new Item(atual.getInfo().getChave()));
+				this.removerNo(atual.getInfo().getChave());  //  posso ter entendido errado, talvez não seja necessário retirar o prod da L1
+			}
+		}
+	}
+	
+	//  LISTA 04 - QUESTÃO 14 - Checar palíndromo
+	public boolean palindromo(String original) {
+		String inversa = "";
+		
+		for (int i = 0; i < original.length(); i++) {
+			inversa = original.charAt(i) + inversa;
+		}
+		
+		if (inversa == original) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	//  LISTA 04 - QUESTÃO 15 - Inserir ordenadamente
+	public void inserirEmOrdem(int valor) {
+		NoDupla atual = this.primeiro;
+		NoDupla novoNo = new NoDupla(new Item(valor));
+		
+		if (valor < atual.getInfo().getChave()) {
+			this.primeiro.setAnterior(novoNo);
+			novoNo.setProximo(this.primeiro);
+			this.primeiro = novoNo;
+			this.qtdNos++;
+		}
+		else if (valor > this.ultimo.getInfo().getChave()) {
+			this.inserirUltimo(new Item(valor));
+		}
+		else {
+			while(atual.getInfo().getChave() > atual.getProximo().getInfo().getChave()) {
+				atual = atual.getProximo();
+			}
+			
+			novoNo.setProximo(atual.getProximo());
+			novoNo.setAnterior(atual.getAnterior());
+			atual.getProximo().setAnterior(novoNo);
+			atual.getAnterior().setProximo(novoNo);
+			this.qtdNos++;
+		}
+		
+		System.out.println("Valor adicionado na ordem.");
+	}
 }
