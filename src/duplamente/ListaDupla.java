@@ -250,21 +250,23 @@ public class ListaDupla {
 		System.out.println("Os valores repetidos foram removidos.");
 	}
 	
-	// LISTA 04 - QUESTÃO 12 - Mostrar nome dos atletas com mais de 2m de altura
-		//OBS: os nós criados pela professora não possuem um campo de informação de nome, de forma que a lógica 
-		//só pode ser testada por abstração, a não ser que se criem novas classes somente para testar esta função
-	public String atletasAcimaDe2m() {
-		String msg = "";
-		NoDupla atual = this.primeiro;  //Considere que Item possui um valor double (se os valores forem salvos em cm, seria int) altura e um valor String nome
-		
-		while (atual != null) {
-			if (atual.getInfo().getAltura() > 2.0) {
-				msg += "Jogador: " = atual.getInfo().getNome() + ". Altura: " + String.format("%.2f", atual.getInfo().getAltura()) + ".\n";
+	/*
+	 *  LISTA 04 - QUESTÃO 12 - Mostrar nome dos atletas com mais de 2m de altura
+		OBS: os nós criados pela professora não possuem um campo de informação de nome, de forma que a lógica 
+		só pode ser testada por abstração, a não ser que se criem novas classes somente para testar esta função
+			public String atletasAcimaDe2m() {
+				String msg = "";
+				NoDupla atual = this.primeiro;  //Considere que Item possui um valor double (se os valores forem salvos em cm, seria int) altura e um valor String nome
+				
+				while (atual != null) {
+					if (atual.getInfo().getAltura() > 2.0) {
+						msg += "Jogador: " = atual.getInfo().getNome() + ". Altura: " + String.format("%.2f", atual.getInfo().getAltura()) + ".\n";
+					}
+				}
+				
+				return msg;
 			}
-		}
-		
-		return msg;
-	}
+	 */
 	
 	//  LISTA 04 - QUESTÃO 13 - Passar produtos enlatados (chave > 100) da L1 para L2
 	public void produtosEnlatados(ListaDupla L3) {

@@ -108,7 +108,7 @@ public class MenuPrincipalDupla {
 				return true;
 			case 10:
 				//  NÃO TESTAR, VAI DAR RUIM
-				System.out.println(L1.atletasAcimaDe2m());
+				//  System.out.println(L1.atletasAcimaDe2m());
 				return true;
 			case 11:
 				ListaDupla L3 = new ListaDupla();
