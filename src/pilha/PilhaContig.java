@@ -243,4 +243,68 @@ public class PilhaContig {
 	}
 	
 	//  LISTA DE EXERCICIOS 5 - QUESTÃO 11 - Retira uma valor da lista dupla e dpois passa tudo para pilha
+	public PilhaContig listaRevisadaParaPilha(PilhaContig pilha, int valor) {
+		ListaDupla lista = new ListaDupla();
+		NoDupla atual = lista.getPrimeiro();
+		
+		if (lista.listaVazia()) {
+			return pilha;
+		}
+		else {
+			while (atual != null) {
+				if (atual.getInfo().getChave() == valor) {
+					lista.removerNo(valor);
+				}
+				else {
+					pilha.empilhar(new Item(atual.getInfo().getChave()));
+				}
+				
+				atual = atual.getProximo();
+			}
+		}
+		
+		return pilha;
+	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 12 - Verificar palíndromo
+	public boolean verificarPalindromo(String original) {
+		String inversa = "";
+		PilhaContigString aux = new PilhaContigString(original.length());
+		
+		for (int a = 0; a < original.length(); a++) {
+			aux.empilharChar(new ItemChar(original.charAt(a)));
+		}
+		
+		while (!aux.eVazia()) {
+			inversa += aux.desempilharChar().getChave();
+		}
+		
+		if (original == inversa) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 13 - Calcular a potencia da pilha
+	public long potenciaPilha() {
+		long resultado = 1;
+		PilhaContig aux = new PilhaContig(this.topo);
+		Item item;
+		
+		while (!this.eVazia()) {
+			item = this.desempilhar();
+			aux.empilhar(item);
+			resultado *= Math.pow(item.getChave(), this.topo);
+		}
+		
+		while (!aux.eVazia()) {
+			this.empilhar(aux.desempilhar());
+		}
+		
+		return resultado;
+	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 14 - 
 }
