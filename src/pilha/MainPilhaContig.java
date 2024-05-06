@@ -23,6 +23,7 @@ public class MainPilhaContig {
 	public static boolean Menu(PilhaContig pilha) {
 		int chave, escolha;
 		Item item;
+		String original;
 		
 		System.out.println("Informe o procedimento a realizar:");
 		System.out.println("1. Adicionar valor à pilha");
@@ -45,55 +46,122 @@ public class MainPilhaContig {
 		escolha = scan.nextInt();
 		
 		if (escolha == 16) {
+			System.out.println("O programa será encerrado.");
 			return false;
 		}
 		else {
 			switch (escolha) {
 			case 1:
+				System.out.println("Qual o valor a ser adicionado?");
+				chave = scan.nextInt();
 				
+				if (pilha.empilhar(new Item(chave))) {
+					System.out.println("Valor adicionado.");
+				}
+				else {
+					System.out.println("Valor não adicionado.");
+				}
 				break;
+				
 			case 2:
-						
+				if (pilha.desempilhar() == null) {
+					System.out.println("Pilha vazia, impossível desempilhar.");
+				}
+				else {
+					System.out.println("Valor desempilhado.");
+				}
 				break;
+				
 			case 3:
-				
+				System.out.print("Digite a palavra ou frase a inverter: ");
+				original = scan.nextLine();
+				pilha.inverterString(original);
 				break;
+				
 			case 4:
-				
+				if (pilha.retiraMaiorQueDez()) {
+					System.out.println("Todos os valores maiores que 10 foram retirados.");
+				}
+				else {
+					System.out.println("Não haviam valores maiores que 10 na pilha.");
+				}
 				break;
+				
 			case 5:
+				System.out.print("Informe quantos valores possui a pilha para comparação: ");
+				escolha = scan.nextInt();
 				
+				PilhaContig pilha2 = new PilhaContig(escolha);
+				for (int a = 1; a <= escolha; a++) {
+					System.out.print("Informe valor " + a + ": ");
+					escolha = scan.nextInt();
+					pilha2.empilhar(new Item(escolha));
+				}
+				
+				if (pilha.compararPilhas(pilha2) == 1) {
+					System.out.println("As pilhas são iguais.");
+				}
+				else {
+					System.out.println("As pilhas não são iguais.");
+				}
 				break;
+				
 			case 6:
+				String palavra1, palavra2;
 				
+				System.out.print("Informe a palavra/frase 1: ");
+				palavra1 = scan.nextLine();
+				System.out.print("Informe a palavra/frase 2: ");
+				palavra2 = scan.nextLine();
+				
+				if (pilha.compararStringInverso(palavra1, palavra2)) {
+					System.out.println("As palavras/frases são inversas entre si.");
+				}
+				else {
+					System.out.println("As palavras/frases não são inversas entre si.");
+				}
 				break;
+				
 			case 7:
-				
+				System.out.print("Informe o número base do fatorial: ");
+				escolha = scan.nextInt();
+				System.out.println(pilha.calculaFatorial(escolha));
 				break;
+				
 			case 8:
 				
 				break;
+				
 			case 9:
 				
 				break;
+				
 			case 10:
 				
 				break;
+				
 			case 11:
 				
 				break;
+				
 			case 12:
 				
 				break;
+				
 			case 13:
 				
 				break;
+				
 			case 14:
 				
 				break;
+				
 			case 15:
 				
 				break;
+			default:
+				System.out.println("Opção inválida, o programa será encerrado.");
+				return false;
 			}
 			
 			return true;
