@@ -2,6 +2,8 @@ package pilha;
 
 import dados.Item;
 import dados.ItemChar;
+import duplamente.ListaDupla;
+import duplamente.NoDupla;
 
 public class PilhaContig {
 	private Item[] info;
@@ -187,4 +189,58 @@ public class PilhaContig {
 		
 		return resultado;
 	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 8 - Calcular número binário a partir de número decimal
+	public String converteDecimalBinario(int valor) {
+		String binario = "";
+		int resultado, resto;
+		PilhaContig aux = new PilhaContig(valor);
+		
+		for (int a = valor; a > 2;) {
+			resultado = a/2;
+			resto = a%2;
+			
+			aux.empilhar(new Item(resto));
+			a = resultado;
+		}
+		
+		while (!aux.eVazia()) {
+			binario += aux.desempilhar().getChave();
+		}
+		
+		return binario;
+	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 9 - Transferir valores de uma pilha para uma lista duplamente encadeada
+	public void pilhaParaListaDupla(ListaDupla lista) {
+		PilhaContig aux = new PilhaContig(this.topo);
+		
+		while (!this.eVazia()) {
+			aux.empilhar(this.desempilhar());
+		}
+		
+		while(!aux.eVazia()) {
+			lista.inserirUltimo(aux.desempilhar());
+		}
+	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 10 - Retire todos os valores iguais a X
+	public void retirarOcorrenciasValor(int valor) {
+		PilhaContig aux = new PilhaContig(this.topo);
+		Item item;
+		
+		while (!this.eVazia()) {
+			item = this.desempilhar();
+			
+			if (item.getChave() != valor) {
+				aux.empilhar(item);
+			}
+		}
+		
+		while (!aux.eVazia()) {
+			this.empilhar(aux.desempilhar());
+		}
+	}
+	
+	//  LISTA DE EXERCICIOS 5 - QUESTÃO 11 - Retira uma valor da lista dupla e dpois passa tudo para pilha
 }

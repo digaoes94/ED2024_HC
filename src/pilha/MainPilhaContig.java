@@ -129,7 +129,9 @@ public class MainPilhaContig {
 				break;
 				
 			case 8:
-				
+				System.out.print("Informe o número a converter: ");
+				escolha = scan.nextInt();
+				System.out.println(pilha.converteDecimalBinario(escolha));
 				break;
 				
 			case 9:
