@@ -306,5 +306,61 @@ public class PilhaContig {
 		return resultado;
 	}
 	
-	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 14 - 
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 14 - Adicionar duas pilhas em um único vetor
+	public int[] duasPilhasUmVetor(PilhaContig pilha1, PilhaContig pilha2) {
+		int[] vetor = new int[(pilha1.topo + pilha2.topo)];
+		
+		for (int a = 0; a < pilha1.topo; a++) {
+			vetor[a] = pilha1.desempilhar().getChave();
+		}
+		
+		for (int a = pilha2.topo; a > pilha2.topo; a--) {
+			vetor[a] = pilha2.desempilhar().getChave();
+		}
+		
+		return vetor;
+	}
+	
+	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 15 - Palindromo e A ou B
+	public boolean palindromoAB(String x, String y) {
+		PilhaContigString pilha1 = new PilhaContigString(x.length());
+		PilhaContigString pilha2 = new PilhaContigString(y.length());
+		PilhaContigString aux1 = new PilhaContigString(x.length());
+		PilhaContigString aux2 = new PilhaContigString(y.length());
+		ItemChar item1, item2;
+		
+		if (x.length() != y.length()) {
+			return false;
+		}
+		else {
+			while (!pilha1.eVazia()) {
+				item1 = pilha1.desempilharChar();
+				item2 = pilha2.desempilharChar();
+				
+				if (item1.getChave() != 'A' && item1.getChave() != 'B') {
+					return false;
+				}
+				if (item2.getChave() != 'A' && item2.getChave() != 'B') {
+					return false;
+				}
+				
+				aux1.empilharChar(item1);
+				aux2.empilharChar(item2);
+			}
+		}
+		
+		while (!pilha1.eCheia()) {
+			item1 = aux1.desempilharChar();
+			item2 = aux2.desempilharChar();
+			
+			if (item1 != item2) {
+				return false;
+			}
+			
+			pilha1.empilharChar(item1);
+			pilha2.empilharChar(item2);
+		}
+		
+		return true;
+	}
 }
