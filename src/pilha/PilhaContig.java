@@ -222,6 +222,8 @@ public class PilhaContig {
 		while(!aux.eVazia()) {
 			lista.inserirUltimo(aux.desempilhar());
 		}
+		
+		System.out.println(lista.toString());
 	}
 	
 	//  LISTA DE EXERCÍCIOS 5 - QUESTÃO 10 - Retire todos os valores iguais a X

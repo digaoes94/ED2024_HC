@@ -1,8 +1,9 @@
 package pilha;
 
 import java.util.Scanner;
+
 import dados.Item;
-import dados.ItemChar;
+import duplamente.ListaDupla;
 
 public class MainPilhaContig {
 	//  System.out.println("");
@@ -135,32 +136,79 @@ public class MainPilhaContig {
 				break;
 				
 			case 9:
+				System.out.print("Informe quantos números deve ter a lista: ");
+				escolha = scan.nextInt();
+				String msg = "";
 				
+				ListaDupla lista = new ListaDupla();
+				for (int a = 0; a < escolha; a++) {
+					lista.inserirUltimo(new Item((int) Math.random() * 1000));
+				}
+				pilha.pilhaParaListaDupla(lista);
 				break;
 				
 			case 10:
+				System.out.print("Informe o número a retirar: ");
+				escolha = scan.nextInt();
 				
+				pilha.retirarOcorrenciasValor(escolha);
 				break;
 				
 			case 11:
+				System.out.print("Informe o número a retirar: ");
+				escolha = scan.nextInt();
 				
+				pilha2 = pilha.listaRevisadaParaPilha(pilha, escolha);
 				break;
 				
 			case 12:
+				System.out.print("Informe a palavra a checar: ");
+				palavra1 = scan.next();
 				
+				if (pilha.verificarPalindromo(palavra1)) {
+					System.out.print("A palavra é um palíndromo.");
+				}
+				else {
+					System.out.print("A palavra não é um palíndromo.");
+				}
 				break;
 				
 			case 13:
-				
+				System.out.println(pilha.potenciaPilha());
 				break;
 				
 			case 14:
+				System.out.print("Informe quantos valores a pilha1 terá: ");
+				escolha = scan.nextInt();
+				PilhaContig aux1 = new PilhaContig(escolha);
+				for (int a = 0; a < 0; a++) {
+					aux1.empilhar(new Item((int) Math.random() * 1000));
+				}
 				
+				System.out.print("Informe quantos valores a pilha2 terá: ");
+				escolha = scan.nextInt();
+				PilhaContig aux2 = new PilhaContig(escolha);
+				for (int a = 0; a < 0; a++) {
+					aux2.empilhar(new Item((int) Math.random() * 1000));
+				}
+				
+				System.out.println(pilha.duasPilhasUmVetor(aux1, aux2).toString());
 				break;
 				
 			case 15:
+				System.out.print("Informe a palavra1: ");
+				palavra1 = scan.next();
+				System.out.print("Informe a palavra2: ");
+				palavra2 = scan.next();
 				
+				if (pilha.palindromoAB(palavra1, palavra2)) {
+					System.out.println("As palavras são palíndromo e só possuem A ou B");
+				}
+				else {
+					System.out.println("As palavras não são um palíndromo constituído só de As ou Bs");
+				}
 				break;
+				
 			default:
 				System.out.println("Opção inválida, o programa será encerrado.");
 				return false;
