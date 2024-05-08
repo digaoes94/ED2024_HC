@@ -23,7 +23,6 @@ public class MainPilhaContig {
 	
 	public static boolean Menu(PilhaContig pilha) {
 		int chave, escolha;
-		Item item;
 		String original;
 		
 		System.out.println("Informe o procedimento a realizar:");
@@ -138,7 +137,6 @@ public class MainPilhaContig {
 			case 9:
 				System.out.print("Informe quantos números deve ter a lista: ");
 				escolha = scan.nextInt();
-				String msg = "";
 				
 				ListaDupla lista = new ListaDupla();
 				for (int a = 0; a < escolha; a++) {
