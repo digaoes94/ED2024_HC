@@ -1,7 +1,10 @@
 package filaCircular;
 
 import dados.Item;
+import dados.ItemChar;
 import pilha.PilhaContig;
+import pilha.PilhaContigString;
+import filaCircular.FilaCircString;
 
 public class FilaCircular {
 	private Item[] info;
@@ -135,5 +138,99 @@ public class FilaCircular {
 	}
 	
 	//  LISTA DE EXERCÍCIOS 6 - QUESTÃO 4 - Imprimir documento em ordem decrescente
+	public FilaCircString imprimeDecrescente(FilaCircString docOriginal) {
+		FilaCircString docInverso = new FilaCircString(docOriginal.getTamanho());
+		PilhaContigString pilha = new PilhaContigString(docOriginal.getTamanho());
+		
+		while (!docOriginal.eVazia()) {
+			pilha.empilharChar(docOriginal.desenfileirar());
+		}
+		
+		while (!pilha.eVazia()) {
+			docInverso.enfileirar(pilha.desempilharChar());
+		}
+		
+		return docInverso;
+	}
 	
+	//  LISTA DE EXERCÍCIOS 6 - QUESTÃO 5 - Separar pessoas 70+ em fila preferencial
+	public FilaCircular filaPreferencial(FilaCircular original) {
+		FilaCircular aux = new FilaCircular(original.tamanho);
+		FilaCircular preferencial = new FilaCircular(100);
+		int idade = 70;
+		Item item;
+		
+		while (!original.eVazia()) {
+			item = original.desenfileirar();
+			
+			if (item.getChave() >= idade) {
+				preferencial.enfileirar(item);
+			}
+			else {
+				aux.enfileirar(item);
+			}
+		}
+		
+		while (!aux.eVazia()) {
+			original.enfileirar(aux.desenfileirar());
+		}
+		
+		return preferencial;
+	}
+	
+	//  LISTA DE EXERCÍCIOS 6 - QUESTÃO 6 - Inserir X acima de 10
+	//  OBS: bem provável que aconteça StackOverflow se ficar desse jeito
+	public boolean enfilerar10(int x) {
+		FilaCircular aux = new FilaCircular(this.tamanho);
+		Item item;
+		
+		while (!this.eVazia()) {
+			aux.enfileirar(this.desenfileirar());
+		}
+		
+		while (!aux.eVazia()) {
+			item = aux.desenfileirar();
+			
+			if (item.getChave() == 10) {
+				this.enfileirar(item);
+				this.enfileirar(new Item(x));
+			}
+			else {
+				this.enfileirar(item);
+			}
+		}
+		
+		return (this.eCheia());
+	}
+	
+	//  LISTA DE EXERCÍCIOS 6 - QUESTÃO 7 - Passar alunos desqualificados de uma fila para uma lista
+	//  OBS: o código ficará comentado pois a Fila e a Lista precisam guardar valores booleanos, o que implica criar duas novas classes
+	//  OBS2: considere que o Item da FilaCircString também guarde um valor boolean
+	
+	/*
+	 * public ListaDuplaString alunosDesqualificados(FilaCircString original) {
+	 * 		FilaCircString aux = new FilaCircString(this.tamanho);
+	 * 		ListaDuplaString alunosDesqualificados = new ListaDuplaString();
+	 * 		ItemString item;
+	 * 
+	 * 		while (!original.eVazia()) {
+	 * 			item = original.desenfileirar();
+	 * 			
+	 * 			if (item.getBool() == true) {
+	 * 				alunosDequalificados.inserirUltimo(item.getNome());
+	 * 			}
+	 * 			else {
+	 * 				aux.enfileirar(item);
+	 * 			}
+	 * 		}
+	 * 
+	 * 		while (!aux.eVazia()) {
+	 * 			item = original.desenfileirar();
+	 * 			
+	 * 			original.enfileirar(aux.desenfileirar());
+	 * 		}
+	 * 
+	 * 		return alunosDesqualificados;
+	 * }
+	 */
 }

@@ -1,6 +1,5 @@
 package pilha;
 
-import dados.Item;
 import dados.ItemChar;
 
 public class PilhaContigString {
